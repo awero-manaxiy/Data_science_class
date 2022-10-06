@@ -29,7 +29,7 @@ class DataAnalysis:
         for index, value in self.data.iterrows():
             if index != entry:
                 coordinates_difference = [x - y for x in self.data.iloc[entry][:-1] for y in value[:-1]]
-                distance = math.hypot(*coordinates_difference)
+                distance = sum(math.sqrt(x ** 2) for x in coordinates_difference)
                 neighbours_distance.append([distance, value[-1]])
         return sorted(neighbours_distance)
 
